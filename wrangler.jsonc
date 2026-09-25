@@ -15,7 +15,7 @@
     {
       "binding": "DB",
       "database_name": "homeworktrack",
-      "database_id": "PUT_THE_NEW_DATABASE_ID_HERE",
+      "database_id": "85aac2a3-bf29-4f00-9a57-fa8dfb0a0465",
       "migrations_dir": "./migrations"
     }
   ],
