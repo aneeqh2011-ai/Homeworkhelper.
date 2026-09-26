@@ -1,138 +1,299 @@
-<!doctype html>
+```html
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>HomeworkTrack Pro</title>
-<style>
-:root{font-family:Inter,system-ui,Arial,sans-serif;color:#172033;background:#f5f7fb}
-*{box-sizing:border-box}body{margin:0}.wrap{max-width:1100px;margin:auto;padding:28px}
-.card{background:#fff;border:1px solid #e4e8f0;border-radius:18px;padding:24px;box-shadow:0 8px 30px rgba(20,30,50,.06)}
-h1,h2{margin-top:0}.muted{color:#68738a}.hidden{display:none!important}
-input{width:100%;padding:13px;border:1px solid #cfd6e3;border-radius:10px;margin:7px 0 14px;font:inherit}
-button{border:0;border-radius:10px;padding:11px 15px;font-weight:700;cursor:pointer}
-.primary{background:#1f5eff;color:white}.danger{background:#ffe7e7;color:#a40000}.ghost{background:#eef2f8}
-.grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.stat{padding:18px;border:1px solid #e5e9f1;border-radius:14px}.num{font-size:28px;font-weight:800}
-.login{max-width:460px;margin:8vh auto}.brand{font-size:28px;font-weight:900;margin-bottom:5px}
-.top{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:22px}
-table{width:100%;border-collapse:collapse;margin-top:14px}th,td{text-align:left;padding:12px;border-bottom:1px solid #edf0f5}
-.error{color:#b00020;margin:8px 0}.success{color:#137333;margin:8px 0}
-@media(max-width:800px){.grid{grid-template-columns:repeat(2,1fr)}.wrap{padding:15px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HomeworkTrack PRO</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #0b1020;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .card {
+      background: #151b2f;
+      border: 1px solid #293250;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      text-align: center;
+    }
+
+    .logo {
+      width: 72px;
+      height: 72px;
+      margin: 0 auto 22px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      font-weight: 800;
+    }
+
+    h1 {
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #aab3cc;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    button {
+      width: 100%;
+      border: none;
+      border-radius: 12px;
+      padding: 15px 20px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .primary {
+      background: #6366f1;
+      color: white;
+    }
+
+    .primary:hover {
+      background: #5558e8;
+      transform: translateY(-1px);
+    }
+
+    .secondary {
+      background: #222a43;
+      color: white;
+      border: 1px solid #343e5d;
+    }
+
+    .secondary:hover {
+      background: #2b3552;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .login-box {
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #dce2f5;
+      font-weight: 600;
+    }
+
+    input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid #343e5d;
+      background: #0e1426;
+      color: white;
+      font-size: 16px;
+      outline: none;
+      margin-bottom: 16px;
+    }
+
+    input:focus {
+      border-color: #6366f1;
+    }
+
+    .back {
+      background: transparent;
+      color: #9da8c5;
+      margin-top: 10px;
+    }
+
+    .back:hover {
+      color: white;
+    }
+
+    .footer {
+      margin-top: 25px;
+      color: #707b99;
+      font-size: 13px;
+    }
+  </style>
 </head>
+
 <body>
-<div class="wrap">
-  <section id="auth">
-    <div class="card login">
-      <div class="brand">HomeworkTrack PRO</div>
-      <p class="muted">Teacher workspace</p>
 
-      <div id="setupBox" class="hidden">
-        <h2>First-time setup</h2>
-        <p class="muted">Create the first administrator account for this HomeworkTrack installation.</p>
-        <form id="setupForm">
-          <input id="setupName" placeholder="Your name" required>
-          <input id="setupEmail" type="email" placeholder="School email" required>
-          <input id="setupPassword" type="password" placeholder="Password (8+ characters)" minlength="8" required>
-          <button class="primary" type="submit">Create administrator</button>
-        </form>
-        <div id="setupMsg"></div>
+  <div class="container">
+
+    <!-- MAIN SCREEN -->
+    <div class="card" id="mainScreen">
+
+      <div class="logo">H</div>
+
+      <h1>HomeworkTrack PRO</h1>
+
+      <p class="subtitle">
+        Organise homework, track assignments and stay on top of your school work.
+      </p>
+
+      <div class="buttons">
+        <button class="primary" onclick="showLogin()">
+          Sign In
+        </button>
+
+        <button class="secondary" onclick="showTeacher()">
+          Teacher Workspace
+        </button>
       </div>
 
-      <div id="loginBox" class="hidden">
-        <h2>Teacher sign in</h2>
-        <form id="loginForm">
-          <input id="email" type="email" placeholder="School email" required>
-          <input id="password" type="password" placeholder="Password" required>
-          <button class="primary" type="submit">Sign in</button>
-        </form>
-        <div id="loginMsg"></div>
+      <div class="footer">
+        HomeworkTrack PRO
       </div>
-    </div>
-  </section>
 
-  <section id="app" class="hidden">
-    <div class="top">
-      <div>
-        <div class="brand">HomeworkTrack PRO</div>
-        <div id="welcome" class="muted"></div>
+    </div>
+
+
+    <!-- LOGIN SCREEN -->
+    <div class="card hidden" id="loginScreen">
+
+      <div class="logo">H</div>
+
+      <h1>Welcome back</h1>
+
+      <p class="subtitle">
+        Sign in to HomeworkTrack PRO.
+      </p>
+
+      <div class="login-box">
+
+        <label for="email">Email</label>
+
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your email"
+          autocomplete="email"
+        >
+
+        <label for="password">Password</label>
+
+        <input
+          type="password"
+          id="password"
+          placeholder="Enter your password"
+          autocomplete="current-password"
+        >
+
+        <button class="primary" onclick="login()">
+          Sign In
+        </button>
+
+        <button class="back" onclick="showMain()">
+          ← Back
+        </button>
+
       </div>
-      <button id="logout" class="ghost">Sign out</button>
+
     </div>
 
-    <div class="card">
-      <h2>Teacher workspace</h2>
-      <div class="grid">
-        <div class="stat"><div class="muted">Classes</div><div id="classes" class="num">0</div></div>
-        <div class="stat"><div class="muted">Students</div><div id="students" class="num">0</div></div>
-        <div class="stat"><div class="muted">Homework</div><div id="homework" class="num">0</div></div>
-        <div class="stat"><div class="muted">Incomplete</div><div id="incomplete" class="num">0</div></div>
-        <div class="stat"><div class="muted">Detentions</div><div id="detentions" class="num">0</div></div>
+
+    <!-- TEACHER SCREEN -->
+    <div class="card hidden" id="teacherScreen">
+
+      <div class="logo">T</div>
+
+      <h1>Teacher Workspace</h1>
+
+      <p class="subtitle">
+        Teacher tools and classroom management.
+      </p>
+
+      <div class="buttons">
+
+        <button class="primary" onclick="teacherLogin()">
+          Teacher Sign In
+        </button>
+
+        <button class="back" onclick="showMain()">
+          ← Back
+        </button>
+
       </div>
+
     </div>
 
-    <div class="card" style="margin-top:18px">
-      <h2>Detention review</h2>
-      <p class="muted">Review records before they become approved/completed detentions.</p>
-      <div id="detentionArea">Loading…</div>
-    </div>
-  </section>
-</div>
+  </div>
 
-<script>
-const $ = id => document.getElementById(id);
-async function call(path, opts={}) {
-  const r = await fetch(path, {credentials:"include", ...opts, headers:{"content-type":"application/json",...(opts.headers||{})}});
-  let data={}; try{data=await r.json()}catch{}
-  if(!r.ok) throw new Error(data.error || "Request failed");
-  return data;
-}
-async function start(){
-  try{
-    const me=await call("/api/me");
-    showApp(me.teacher);
-  }catch{
-    const s=await call("/api/setup/status");
-    $("setupBox").classList.toggle("hidden",!s.needsSetup);
-    $("loginBox").classList.toggle("hidden",s.needsSetup);
-  }
-}
-function showApp(t){
-  $("auth").classList.add("hidden"); $("app").classList.remove("hidden");
-  $("welcome").textContent=`Signed in as ${t.display_name} • ${t.role}`;
-  loadDashboard(); loadDetentions();
-}
-$("setupForm").onsubmit=async e=>{
-  e.preventDefault(); $("setupMsg").textContent="";
-  try{await call("/api/setup",{method:"POST",body:JSON.stringify({
-    display_name:$("setupName").value,email:$("setupEmail").value,password:$("setupPassword").value
-  })}); $("setupMsg").className="success"; $("setupMsg").textContent="Account created. You can now sign in.";
-  $("setupBox").classList.add("hidden"); $("loginBox").classList.remove("hidden");
-  }catch(err){$("setupMsg").className="error";$("setupMsg").textContent=err.message}
-};
-$("loginForm").onsubmit=async e=>{
-  e.preventDefault(); $("loginMsg").textContent="";
-  try{const d=await call("/api/login",{method:"POST",body:JSON.stringify({email:$("email").value,password:$("password").value})}); showApp(d.teacher)}
-  catch(err){$("loginMsg").className="error";$("loginMsg").textContent=err.message}
-};
-$("logout").onclick=async()=>{await call("/api/logout",{method:"POST"});location.reload()};
-async function loadDashboard(){
-  const d=await call("/api/dashboard");
-  ["classes","students","homework","incomplete","detentions"].forEach(k=>$(k).textContent=d[k]);
-}
-async function loadDetentions(){
-  const rows=await call("/api/detentions");
-  if(!rows.length){$("detentionArea").innerHTML="<p class='muted'>No detention records yet.</p>";return}
-  $("detentionArea").innerHTML=`<table><thead><tr><th>Student</th><th>Reason</th><th>Status</th><th>Action</th></tr></thead><tbody>${
-    rows.map(r=>`<tr><td>${esc(r.student_name)}</td><td>${esc(r.reason)}</td><td>${esc(r.status)}</td><td>${
-      r.status==="pending_review" ? `<button class="primary" onclick="review(${r.id},'approve')">Approve</button> <button class="danger" onclick="review(${r.id},'cancel')">Cancel</button>` :
-      r.status==="approved" ? `<button class="primary" onclick="review(${r.id},'complete')">Complete</button>` : "—"
-    }</td></tr>`).join("")
-  }</tbody></table>`;
-}
-async function review(id,action){await call("/api/detentions/review",{method:"POST",body:JSON.stringify({id,action})});loadDashboard();loadDetentions()}
-function esc(v){return String(v??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[m]))}
-start();
-</script>
+
+  <script>
+
+    function hideAll() {
+      document.getElementById("mainScreen").classList.add("hidden");
+      document.getElementById("loginScreen").classList.add("hidden");
+      document.getElementById("teacherScreen").classList.add("hidden");
+    }
+
+    function showMain() {
+      hideAll();
+      document.getElementById("mainScreen").classList.remove("hidden");
+    }
+
+    function showLogin() {
+      hideAll();
+      document.getElementById("loginScreen").classList.remove("hidden");
+    }
+
+    function showTeacher() {
+      hideAll();
+      document.getElementById("teacherScreen").classList.remove("hidden");
+    }
+
+    function login() {
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      if (!email || !password) {
+        alert("Please enter your email and password.");
+        return;
+      }
+
+      alert("Login system is not connected yet.");
+    }
+
+    function teacherLogin() {
+      alert("Teacher login system is not connected yet.");
+    }
+
+  </script>
+
 </body>
 </html>
+```
