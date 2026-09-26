@@ -1,16 +1,31 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "homeworktrack-pro-v4",
+  "name": "homeworkhelpernewnew",
   "main": "src/worker.ts",
   "compatibility_date": "2026-09-17",
-  "compatibility_flags": ["nodejs_compat"],
-  "assets": { "directory": "./public", "binding": "ASSETS" },
-  "ai": { "binding": "AI" },
-  "d1_databases": [{
-    "binding": "DB",
-    "database_name": "homeworktrack",
-    "database_id": "REPLACE_WITH_D1_DATABASE_ID",
-    "migrations_dir": "./migrations"
-  }],
-  "observability": { "enabled": true }
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS"
+  },
+
+  "ai": {
+    "binding": "AI"
+  },
+
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "homeworktrack",
+      "database_id": "85aac2a3-bf29-4f00-9a57-fa8dfb0a0465",
+      "migrations_dir": "./migrations"
+    }
+  ],
+
+  "observability": {
+    "enabled": true
+  }
 }
