@@ -1,16 +1,29 @@
-{
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "homeworktrack-pro-v4",
-  "main": "src/worker.ts",
-  "compatibility_date": "2026-09-17",
-  "compatibility_flags": ["nodejs_compat"],
-  "assets": { "directory": "./public", "binding": "ASSETS" },
-  "ai": { "binding": "AI" },
-  "d1_databases": [{
-    "binding": "DB",
-    "database_name": "homeworktrack",
-    "database_id": "REPLACE_WITH_D1_DATABASE_ID",
-    "migrations_dir": "./migrations"
-  }],
-  "observability": { "enabled": true }
-}
+from pathlib import Path
+import zipfile, json, shutil
+
+src_zip = Path("/mnt/data/HomeworkTrack_PRO_COMPLETE.zip")
+out_zip = Path("/mnt/data/HomeworkTrack_PRO_COMPLETE_FIXED_D1.zip")
+work = Path("/mnt/data/HomeworkTrack_PRO_COMPLETE_FIXED_D1")
+
+if work.exists():
+    shutil.rmtree(work)
+work.mkdir(parents=True)
+
+with zipfile.ZipFile(src_zip, "r") as z:
+    z.extractall(work)
+
+# Find and update every wrangler.jsonc in the extracted project.
+for p in work.rglob("wrangler.jsonc"):
+    data = json.loads(p.read_text(encoding="utf-8"))
+    for db in data.get("d1_databases", []):
+        if db.get("database_name") == "homeworktrack" or db.get("binding") == "DB":
+            db["database_id"] = "85aac2a3-bf29-4f00-9a57-fa8dfb0a0465"
+    p.write_text(json.dumps(data, indent=2) + "\n", encoding="utf-8")
+
+# Re-zip with project files at the archive root.
+with zipfile.ZipFile(out_zip, "w", zipfile.ZIP_DEFLATED) as z:
+    for p in work.rglob("*"):
+        if p.is_file():
+            z.write(p, p.relative_to(work))
+
+print(f"Created: {out_zip}")
