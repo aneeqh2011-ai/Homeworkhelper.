@@ -1,1 +1,0 @@
-CREATE TABLE IF NOT EXISTS _homeworktrack_v4_migration (id INTEGER PRIMARY KEY, applied_at TEXT DEFAULT CURRENT_TIMESTAMP); INSERT OR IGNORE INTO _homeworktrack_v4_migration(id) VALUES (1);
